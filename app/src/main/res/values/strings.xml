@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LocalQ</string>
+    <string name="startBtn">START</string>
+    <string name="firstQuestionPzn"> W którym roku powstało słynne Muzeum Rogala Świętomarcińskiego w Poznaniu?</string>
+    <string name="firstQestionPznAnsA">A. 2003</string>
+    <string name="firstQestionPznAnsB">B. 2018</string>
+    <string name="firstQestionPznAnsC">C. 2014</string>
+    <string name="firstQestionPznAnsD">D. 2021</string>
+    <string name="circleDescription">Green circle</string>
+    <string name="logoDescription">Logo LocalQ</string>
+</resources>

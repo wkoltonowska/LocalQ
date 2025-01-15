@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstQuestionPzn"
+    android:background="@drawable/background"
+    android:padding="24dp"
+    android:layout_centerInParent="true"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/firstQuestionPzn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/firstQuestionPzn"
+        android:textColor="@color/darkGreen"
+        android:textSize="18sp"
+        android:background="@color/lightGreen"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:layout_marginTop="223dp"
+        android:fontFamily="@font/kanit_regular"
+        android:layout_marginBottom="22dp"
+        />
+
+
+    <Button
+        android:id="@+id/firstQuestionPznAnsA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/firstQestionPznAnsA"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/green"
+        android:paddingVertical="15dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/kanit_regular"
+        android:textAlignment="textStart"
+        android:layout_marginBottom="5dp"
+        />
+
+    <Button
+        android:id="@+id/firstQuestionPznAnsB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/firstQestionPznAnsB"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/green"
+        android:paddingVertical="15dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/kanit_regular"
+        android:textAlignment="textStart"
+        android:layout_marginBottom="5dp"
+        />
+
+    <Button
+        android:id="@+id/firstQuestionPznAnsC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/firstQestionPznAnsC"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/green"
+        android:paddingVertical="15dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/kanit_regular"
+        android:textAlignment="textStart"
+        android:layout_marginBottom="5dp"
+       />
+
+    <Button
+        android:id="@+id/firstQuestionPznAnsD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/firstQestionPznAnsD"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/green"
+        android:paddingVertical="15dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/kanit_regular"
+        android:textAlignment="textStart"
+        android:layout_marginBottom="5dp"
+        />
+
+
+
+</LinearLayout>
