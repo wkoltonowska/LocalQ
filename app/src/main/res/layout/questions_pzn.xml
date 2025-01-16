@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstQuestionPzn"
+    tools:context=".QuestionsPzn"
     android:background="@drawable/background"
     android:padding="24dp"
     android:layout_centerInParent="true"
     android:orientation="vertical"
+
     >
 
     <TextView
@@ -67,7 +68,7 @@
         android:fontFamily="@font/kanit_regular"
         android:textAlignment="textStart"
         android:layout_marginBottom="5dp"
-       />
+        />
 
     <Button
         android:id="@+id/firstQuestionPznAnsD"

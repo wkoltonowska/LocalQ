@@ -16,7 +16,7 @@ private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-          enableEdgeToEdge()
+        enableEdgeToEdge()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -26,11 +26,12 @@ private lateinit var navController: NavController
         }
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+      //  navController.navigate(R.id.action_firstQuestionPzn2_to_secondQuestionPzn)
 
 
 //    binding.startbtn.setOnClickListener{
-//        navController.navigate(R.id.mainActivity2_to_firstQuestoinPzn3)
-//    }
+//      navController.navigate(R.id.mainActivity2_to_firstQuestionPzn3)
+//  }
 
 
     }

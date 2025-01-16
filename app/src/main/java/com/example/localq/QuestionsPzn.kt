@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class FirstQuestionPzn : Fragment() {
 
+
+class QuestionsPzn : Fragment() {
 
 
     override fun onCreateView(
@@ -15,8 +16,8 @@ class FirstQuestionPzn : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first_question_pzn, container, false)
+        return inflater.inflate(R.layout.questions_pzn, container, false)
     }
 
 
-}
+    }
