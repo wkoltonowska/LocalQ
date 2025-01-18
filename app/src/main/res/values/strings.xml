@@ -8,4 +8,7 @@
     <string name="firstQestionPznAnsD">D. 2021</string>
     <string name="circleDescription">Green circle</string>
     <string name="logoDescription">Logo LocalQ</string>
+    <string name="nextQuestionBtn">NASTĘPNE PYTANIE</string>
+    <string name="resultInfo">PRAWIDŁOWA ODPOWIEDŹ :)</string>
+   
 </resources>
