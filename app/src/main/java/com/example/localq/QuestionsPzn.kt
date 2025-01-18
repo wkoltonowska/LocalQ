@@ -1,12 +1,13 @@
 package com.example.localq
 
+
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.localq.databinding.QuestionsPznBinding
-import com.example.localq.databinding.StartBinding
 import androidx.core.content.ContextCompat
 
 
@@ -15,14 +16,9 @@ class QuestionsPzn : Fragment() {
 
     private var _binding: QuestionsPznBinding? = null
     private val binding get() = _binding!!
-
-    private val questionsPzn = arrayOf(" W którym roku powstało słynne Muzeum Rogala Świętomarcińskiego w Poznaniu?","Test1","Test2","Test3","Test4")
-    private val optionsPzn = arrayOf(arrayOf("A. 2003", "B. 2018", "C. 2014", "D. 2021"),
-        arrayOf("A. 2003", "B. 2018", "C. 2014", "D. 2021"),
-        arrayOf("A. 2003", "B. 2018", "C. 2014", "D. 2021"),
-        arrayOf("A. 2003", "B. 2018", "C. 2014", "D. 2021"),
-        arrayOf("A. 2003", "B. 2018", "C. 2014", "D. 2021"))
-
+    private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var questionsPzn: Array<String>
+    private lateinit var optionsPzn: Array<Array<String>>
     private val correctAnswersPzn = arrayOf(0,2,3,1,1)
     private var currentQuestionsPznIndex = 0
     private var goldenOrange: Int = 0
@@ -35,6 +31,7 @@ class QuestionsPzn : Fragment() {
         goldenOrange = ContextCompat.getColor(requireContext(), R.color.goldenOrange)
         green = ContextCompat.getColor(requireContext(), R.color.green)
         yellowGreen = ContextCompat.getColor(requireContext(), R.color.yellowGreen)
+
     }
 
 
@@ -44,10 +41,28 @@ class QuestionsPzn : Fragment() {
     ): View {
         _binding = QuestionsPznBinding.inflate(inflater, container, false)
 
+        questionsPzn = arrayOf(getString(R.string.firstQuestionPzn),
+            getString(R.string.firstQuestionPzn),
+            getString(R.string.firstQuestionPzn),
+            getString(R.string.firstQuestionPzn),
+            getString(R.string.firstQuestionPzn))
+
+        optionsPzn = arrayOf(
+            arrayOf(getString(R.string.firstQestionPznAnsA), getString(R.string.firstQestionPznAnsB),
+                getString(R.string.firstQestionPznAnsC), getString(R.string.firstQestionPznAnsD)),
+            arrayOf(getString(R.string.firstQestionPznAnsA), getString(R.string.firstQestionPznAnsB),
+                getString(R.string.firstQestionPznAnsC), getString(R.string.firstQestionPznAnsD)),
+            arrayOf(getString(R.string.firstQestionPznAnsA), getString(R.string.firstQestionPznAnsB),
+                getString(R.string.firstQestionPznAnsC), getString(R.string.firstQestionPznAnsD)),
+            arrayOf(getString(R.string.firstQestionPznAnsA), getString(R.string.firstQestionPznAnsB),
+                getString(R.string.firstQestionPznAnsC), getString(R.string.firstQestionPznAnsD)),
+            arrayOf(getString(R.string.firstQestionPznAnsA), getString(R.string.firstQestionPznAnsB),
+                getString(R.string.firstQestionPznAnsC), getString(R.string.firstQestionPznAnsD)))
+
         //return inflater.inflate(R.layout.questions_pzn, container, false)
 
         displayQuestion()
-        binding.answerPznB.setOnClickListener {
+        binding.answerPznA.setOnClickListener {
             checkAnswer(0)
         }
         binding.answerPznB.setOnClickListener {
@@ -68,7 +83,7 @@ class QuestionsPzn : Fragment() {
             0 -> binding.answerPznA.setBackgroundColor(yellowGreen)
             1 -> binding.answerPznB.setBackgroundColor(yellowGreen)
             2 -> binding.answerPznC.setBackgroundColor(yellowGreen)
-            3 ->binding.answerPznD.setBackgroundColor(yellowGreen)
+            3 -> binding.answerPznD.setBackgroundColor(yellowGreen)
         }
     }
 
@@ -78,8 +93,8 @@ class QuestionsPzn : Fragment() {
         when(buttonIndex){
             0 -> binding.answerPznA.setBackgroundColor(goldenOrange)
             1 -> binding.answerPznB.setBackgroundColor(goldenOrange)
-            2 ->binding.answerPznC.setBackgroundColor(goldenOrange)
-            3 ->binding.answerPznD.setBackgroundColor(goldenOrange)
+            2 -> binding.answerPznC.setBackgroundColor(goldenOrange)
+            3 -> binding.answerPznD.setBackgroundColor(goldenOrange)
         }
     }
     private fun resetButton(){
@@ -122,29 +137,41 @@ class QuestionsPzn : Fragment() {
             //score++
             correctButtonColors(selectedAnswerIndex)
             showNextQuestionBtn()
-            binding.resultInfo.text = "PRAWIDŁOWA ODPOWIDŹ :)"
+            binding.resultInfo.text = getString(R.string.resultCorrect)
             binding.resultInfo.setTextColor(yellowGreen)
             binding.resultInfo.visibility = View.VISIBLE
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.correct)
+            mediaPlayer.start()
+            if(currentQuestionsPznIndex == questionsPzn.size -1){
+                binding.nextQuestionBtn.text = getString(R.string.finishQuiz)
+            }
         }else{
             wrongButtonColors(selectedAnswerIndex)
             showNextQuestionBtn()
-            binding.resultInfo.text = "BŁĘDNA ODPOWIEDŹ :("
+            binding.resultInfo.text = getString(R.string.resultWrong)
             binding.resultInfo.setTextColor(goldenOrange)
             binding.resultInfo.visibility = View.VISIBLE
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.wrong)
+            mediaPlayer.start()
+            if(currentQuestionsPznIndex == questionsPzn.size -1){
+                binding.nextQuestionBtn.text = getString(R.string.finishQuiz)
+            }
         }
 
         binding.nextQuestionBtn.setOnClickListener {
             if(currentQuestionsPznIndex < questionsPzn.size -1){
                 currentQuestionsPznIndex++
                 binding.resultInfo.visibility = View.INVISIBLE
+                binding.nextQuestionBtn.visibility = View.INVISIBLE
                 displayQuestion()
-            }else{
-                binding.nextQuestionBtn.text = "ZAKOŃCZ QUIZ"
             }
 
         }
 
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mediaPlayer.release()
+    }
 }

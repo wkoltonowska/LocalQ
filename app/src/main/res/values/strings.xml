@@ -9,6 +9,8 @@
     <string name="circleDescription">Green circle</string>
     <string name="logoDescription">Logo LocalQ</string>
     <string name="nextQuestionBtn">NASTĘPNE PYTANIE</string>
-    <string name="resultInfo">PRAWIDŁOWA ODPOWIEDŹ :)</string>
-   
+    <string name="resultCorrect">PRAWIDŁOWA ODPOWIEDŹ :)</string>
+    <string name="resultWrong">NIERAWIDŁOWA ODPOWIEDŹ :(</string>
+    <string name="finishQuiz">ZAKOŃCZ QUIZ</string>
+
 </resources>
