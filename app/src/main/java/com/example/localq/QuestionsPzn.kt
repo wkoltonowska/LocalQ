@@ -1,6 +1,7 @@
 package com.example.localq
 
 
+
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -59,7 +60,6 @@ class QuestionsPzn : Fragment() {
             arrayOf(getString(R.string.fifthQuestionPznAnsA), getString(R.string.fifthQuestionPznAnsB),
                 getString(R.string.fifthQuestionPznAnsC), getString(R.string.fifthQuestionPznAnsD)))
 
-        //return inflater.inflate(R.layout.questions_pzn, container, false)
 
         displayQuestion()
         binding.answerPznA.setOnClickListener {
@@ -77,26 +77,17 @@ class QuestionsPzn : Fragment() {
         return binding.root
     }
 
-    private fun correctButtonColors(buttonIndex: Int){
+    private fun setButtonColors(buttonIndex: Int, color: Int){
 
         when(buttonIndex){
-            0 -> binding.answerPznA.setBackgroundColor(yellowGreen)
-            1 -> binding.answerPznB.setBackgroundColor(yellowGreen)
-            2 -> binding.answerPznC.setBackgroundColor(yellowGreen)
-            3 -> binding.answerPznD.setBackgroundColor(yellowGreen)
+            0 -> binding.answerPznA.setBackgroundColor(color)
+            1 -> binding.answerPznB.setBackgroundColor(color)
+            2 -> binding.answerPznC.setBackgroundColor(color)
+            3 -> binding.answerPznD.setBackgroundColor(color)
         }
     }
 
 
-    private fun wrongButtonColors(buttonIndex: Int){
-
-        when(buttonIndex){
-            0 -> binding.answerPznA.setBackgroundColor(goldenOrange)
-            1 -> binding.answerPznB.setBackgroundColor(goldenOrange)
-            2 -> binding.answerPznC.setBackgroundColor(goldenOrange)
-            3 -> binding.answerPznD.setBackgroundColor(goldenOrange)
-        }
-    }
     private fun resetButton(){
         binding.answerPznA.setBackgroundColor(green)
         binding.answerPznB.setBackgroundColor(green)
@@ -128,6 +119,17 @@ class QuestionsPzn : Fragment() {
         binding.answerPznD.isEnabled = false
     }
 
+        private fun changesAfterAnswered(result: Int, color: Int, soundResId: Int){
+        showNextQuestionBtn()
+        binding.resultInfo.text = getString(result)
+        binding.resultInfo.setTextColor(color)
+        binding.resultInfo.visibility = View.VISIBLE
+        mediaPlayer = MediaPlayer.create(context, soundResId)
+        mediaPlayer.start()
+        if(currentQuestionsPznIndex == questionsPzn.size -1){
+            binding.nextQuestionBtn.text = getString(R.string.finishQuiz)
+    }
+    }
 
     private fun checkAnswer(selectedAnswerIndex: Int){
         val correctAnswerIndex = correctAnswersPzn[currentQuestionsPznIndex]
@@ -135,27 +137,11 @@ class QuestionsPzn : Fragment() {
 
         if(selectedAnswerIndex == correctAnswerIndex){
             //score++
-            correctButtonColors(selectedAnswerIndex)
-            showNextQuestionBtn()
-            binding.resultInfo.text = getString(R.string.resultCorrect)
-            binding.resultInfo.setTextColor(yellowGreen)
-            binding.resultInfo.visibility = View.VISIBLE
-            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.correct)
-            mediaPlayer.start()
-            if(currentQuestionsPznIndex == questionsPzn.size -1){
-                binding.nextQuestionBtn.text = getString(R.string.finishQuiz)
-            }
+            setButtonColors(selectedAnswerIndex, yellowGreen)
+            changesAfterAnswered(R.string.resultCorrect, yellowGreen,  R.raw.correct)
         }else{
-            wrongButtonColors(selectedAnswerIndex)
-            showNextQuestionBtn()
-            binding.resultInfo.text = getString(R.string.resultWrong)
-            binding.resultInfo.setTextColor(goldenOrange)
-            binding.resultInfo.visibility = View.VISIBLE
-            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.wrong)
-            mediaPlayer.start()
-            if(currentQuestionsPznIndex == questionsPzn.size -1){
-                binding.nextQuestionBtn.text = getString(R.string.finishQuiz)
-            }
+            setButtonColors(selectedAnswerIndex, goldenOrange)
+            changesAfterAnswered(R.string.resultWrong, goldenOrange, R.raw.wrong)
         }
 
         binding.nextQuestionBtn.setOnClickListener {

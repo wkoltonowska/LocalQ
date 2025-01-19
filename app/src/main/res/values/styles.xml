@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="btnStyle">
+        android:textColor="@color/white"
+        android:backgroundTint="@color/green"
+        app:cornerRadius="20dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/kanit_regular"
+        android:textAlignment="textStart"
+        android:layout_marginBottom="10dp"
+    </style>
+</resources>
