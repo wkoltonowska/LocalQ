@@ -1,11 +1,37 @@
 <resources>
     <string name="app_name">LocalQ</string>
     <string name="startBtn">START</string>
+
     <string name="firstQuestionPzn"> W którym roku powstało słynne Muzeum Rogala Świętomarcińskiego w Poznaniu?</string>
     <string name="firstQestionPznAnsA">A. 2003</string>
     <string name="firstQestionPznAnsB">B. 2018</string>
     <string name="firstQestionPznAnsC">C. 2014</string>
     <string name="firstQestionPznAnsD">D. 2021</string>
+
+    <string name="secondQuestionPzn">Jak nazywa się słynny budynek z koziołkami w Poznaniu?</string>
+    <string name="secondQuestionPznAnsA">A. Ratusz</string>
+    <string name="secondQuestionPznAnsB">B. Zamek Królewski</string>
+    <string name="secondQuestionPznAnsC">C. Opera</string>
+    <string name="secondQuestionPznAnsD">D. Bazylika Archikatedralna</string>
+
+    <string name="thirdQuestionPzn">Nad jaką rzeką leży Poznań?</string>
+    <string name="thirdQuestionPznAnsA">A. Wisła</string>
+    <string name="thirdQuestionPznAnsB">B. Odra</string>
+    <string name="thirdQuestionPznAnsC">C. Warta</string>
+    <string name="thirdQuestionPznAnsD">D. Bug</string>
+
+    <string name="fourthQuestionPzn">Jaki tradycyjny wypiek jest związany z Poznaniem?</string>
+    <string name="fourthQuestionPznAnsA">A. Kołacz</string>
+    <string name="fourthQuestionPznAnsB">B. Kremówka</string>
+    <string name="fourthQuestionPznAnsC">C. Rogal świętomarciński</string>
+    <string name="fourthQuestionPznAnsD">D. Sękacz</string>
+
+    <string name="fifthQuestionPzn">Jak nazywa się główny plac w centrum Poznania?</string>
+    <string name="fifthQuestionPznAnsA">A. Stary Rynek</string>
+    <string name="fifthQuestionPznAnsB">B. Rynek Główny</string>
+    <string name="fifthQuestionPznAnsC">C. Plac Zamkowy</string>
+    <string name="fifthQuestionPznAnsD">D. Plac Wolności</string>
+
     <string name="circleDescription">Green circle</string>
     <string name="logoDescription">Logo LocalQ</string>
     <string name="nextQuestionBtn">NASTĘPNE PYTANIE</string>

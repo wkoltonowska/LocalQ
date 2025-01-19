@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:text="@string/firstQuestionPzn"
         android:textColor="@color/darkGreen"
-        android:textSize="16sp"
+        android:textSize="17sp"
         android:background="@drawable/question_background"
         android:textAlignment="center"
         android:padding="15dp"

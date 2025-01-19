@@ -19,7 +19,7 @@ class QuestionsPzn : Fragment() {
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var questionsPzn: Array<String>
     private lateinit var optionsPzn: Array<Array<String>>
-    private val correctAnswersPzn = arrayOf(0,2,3,1,1)
+    private val correctAnswersPzn = arrayOf(2,0,2,2,0)
     private var currentQuestionsPznIndex = 0
     private var goldenOrange: Int = 0
     private var green: Int = 0
@@ -42,22 +42,22 @@ class QuestionsPzn : Fragment() {
         _binding = QuestionsPznBinding.inflate(inflater, container, false)
 
         questionsPzn = arrayOf(getString(R.string.firstQuestionPzn),
-            getString(R.string.firstQuestionPzn),
-            getString(R.string.firstQuestionPzn),
-            getString(R.string.firstQuestionPzn),
-            getString(R.string.firstQuestionPzn))
+            getString(R.string.secondQuestionPzn),
+            getString(R.string.thirdQuestionPzn),
+            getString(R.string.fourthQuestionPzn),
+            getString(R.string.fifthQuestionPzn))
 
         optionsPzn = arrayOf(
             arrayOf(getString(R.string.firstQestionPznAnsA), getString(R.string.firstQestionPznAnsB),
                 getString(R.string.firstQestionPznAnsC), getString(R.string.firstQestionPznAnsD)),
-            arrayOf(getString(R.string.firstQestionPznAnsA), getString(R.string.firstQestionPznAnsB),
-                getString(R.string.firstQestionPznAnsC), getString(R.string.firstQestionPznAnsD)),
-            arrayOf(getString(R.string.firstQestionPznAnsA), getString(R.string.firstQestionPznAnsB),
-                getString(R.string.firstQestionPznAnsC), getString(R.string.firstQestionPznAnsD)),
-            arrayOf(getString(R.string.firstQestionPznAnsA), getString(R.string.firstQestionPznAnsB),
-                getString(R.string.firstQestionPznAnsC), getString(R.string.firstQestionPznAnsD)),
-            arrayOf(getString(R.string.firstQestionPznAnsA), getString(R.string.firstQestionPznAnsB),
-                getString(R.string.firstQestionPznAnsC), getString(R.string.firstQestionPznAnsD)))
+            arrayOf(getString(R.string.secondQuestionPznAnsA), getString(R.string.secondQuestionPznAnsB),
+                getString(R.string.secondQuestionPznAnsC), getString(R.string.secondQuestionPznAnsD)),
+            arrayOf(getString(R.string.thirdQuestionPznAnsA), getString(R.string.thirdQuestionPznAnsB),
+                getString(R.string.thirdQuestionPznAnsC), getString(R.string.thirdQuestionPznAnsD)),
+            arrayOf(getString(R.string.fourthQuestionPznAnsA), getString(R.string.fourthQuestionPznAnsB),
+                getString(R.string.fourthQuestionPznAnsC), getString(R.string.fourthQuestionPznAnsD)),
+            arrayOf(getString(R.string.fifthQuestionPznAnsA), getString(R.string.fifthQuestionPznAnsB),
+                getString(R.string.fifthQuestionPznAnsC), getString(R.string.fifthQuestionPznAnsD)))
 
         //return inflater.inflate(R.layout.questions_pzn, container, false)
 
