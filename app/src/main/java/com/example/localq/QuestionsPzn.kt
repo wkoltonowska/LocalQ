@@ -26,7 +26,8 @@ class QuestionsPzn : Fragment() {
     private var score: Int = 0
 
     private fun goToEndScreen() {
-        binding.nextQuestionBtn.setOnTouchListener { v, event ->
+        binding.nextQuestionBtn.setOnTouchListener {
+                                                   v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     v.performClick()
@@ -154,6 +155,7 @@ class QuestionsPzn : Fragment() {
         if(currentQuestionsPznIndex == questionsPzn.size -1){
             binding.nextQuestionBtn.text = getString(R.string.finishQuiz)
             goToEndScreen()
+
         }
     }
 

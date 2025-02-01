@@ -21,8 +21,13 @@
             app:destination="@id/end2" />
     </fragment>
     <fragment
+        android:id="@+id/activity_maps"
+        android:name="com.example.localq.activity_maps"
+        android:label="fragment_activity_maps"
+        tools:layout="@layout/fragment_activity_maps" />
+    <fragment
         android:id="@+id/end2"
-        android:name="End"
+        android:name="com.example.localq.End"
         android:label="End" >
         <action
             android:id="@+id/action_end2_to_start2"
