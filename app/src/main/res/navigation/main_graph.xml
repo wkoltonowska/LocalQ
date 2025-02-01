@@ -15,5 +15,17 @@
     <fragment
         android:id="@+id/questionsPzn"
         android:name="com.example.localq.QuestionsPzn"
-        android:label="QuestionsPzn" />
+        android:label="QuestionsPzn" >
+        <action
+            android:id="@+id/action_questionsPzn_to_end2"
+            app:destination="@id/end2" />
+    </fragment>
+    <fragment
+        android:id="@+id/end2"
+        android:name="End"
+        android:label="End" >
+        <action
+            android:id="@+id/action_end2_to_start2"
+            app:destination="@id/start2" />
+    </fragment>
 </navigation>

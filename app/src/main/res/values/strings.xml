@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">LocalQ</string>
     <string name="startBtn">START</string>
+    <string name="tryAgainBtn">SPRÓBUJ PONOWNIE</string>
+    <string name="yourResult">Twój wynik</string>
+    <string name="points">PUNKTÓW</string>
+    <string name="totalPoints">0</string>
 
     <string name="firstQuestionPzn"> W którym roku powstało słynne Muzeum Rogala Świętomarcińskiego w Poznaniu?</string>
     <string name="firstQestionPznAnsA">A. 2003</string>
@@ -38,5 +42,8 @@
     <string name="resultCorrect">PRAWIDŁOWA ODPOWIEDŹ :)</string>
     <string name="resultWrong">NIERAWIDŁOWA ODPOWIEDŹ :(</string>
     <string name="finishQuiz">ZAKOŃCZ QUIZ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

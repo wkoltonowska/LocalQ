@@ -1,7 +1,5 @@
 package com.example.localq
 
-
-
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.localq.databinding.QuestionsPznBinding
 import androidx.core.content.ContextCompat
-
-
+import androidx.navigation.findNavController
+import android.view.MotionEvent
 
 class QuestionsPzn : Fragment() {
 
@@ -20,11 +18,35 @@ class QuestionsPzn : Fragment() {
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var questionsPzn: Array<String>
     private lateinit var optionsPzn: Array<Array<String>>
-    private val correctAnswersPzn = arrayOf(2,0,2,2,0)
+    private val correctAnswersPzn = arrayOf(2, 0, 2, 2, 0)
     private var currentQuestionsPznIndex = 0
     private var goldenOrange: Int = 0
     private var green: Int = 0
     private var yellowGreen: Int = 0
+    private var score: Int = 0
+
+    private fun goToEndScreen() {
+        binding.nextQuestionBtn.setOnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    v.performClick()
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    val bundle = Bundle().apply {
+                        putInt("SCORE_KEY", score)
+                    }
+                    view?.findNavController()?.navigate(R.id.action_questionsPzn_to_end2, bundle)
+                    true
+                }
+                else -> false
+            }
+        }
+
+    }
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,7 +55,10 @@ class QuestionsPzn : Fragment() {
         green = ContextCompat.getColor(requireContext(), R.color.green)
         yellowGreen = ContextCompat.getColor(requireContext(), R.color.yellowGreen)
 
+
     }
+
+
 
 
     override fun onCreateView(
@@ -128,7 +153,8 @@ class QuestionsPzn : Fragment() {
         mediaPlayer.start()
         if(currentQuestionsPznIndex == questionsPzn.size -1){
             binding.nextQuestionBtn.text = getString(R.string.finishQuiz)
-    }
+            goToEndScreen()
+        }
     }
 
     private fun checkAnswer(selectedAnswerIndex: Int){
@@ -136,7 +162,7 @@ class QuestionsPzn : Fragment() {
         disableAllButtons()
 
         if(selectedAnswerIndex == correctAnswerIndex){
-            //score++
+            score++
             setButtonColors(selectedAnswerIndex, yellowGreen)
             changesAfterAnswered(R.string.resultCorrect, yellowGreen,  R.raw.correct)
         }else{
@@ -155,6 +181,11 @@ class QuestionsPzn : Fragment() {
         }
 
     }
+
+
+
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
