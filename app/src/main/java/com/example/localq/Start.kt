@@ -29,7 +29,7 @@ class Start : Fragment() {
 
         binding.startbtn.setOnClickListener {
 
-            view.findNavController().navigate(R.id.action_start2_to_questionsPzn)
+            view.findNavController().navigate(R.id.action_start2_to_maps)
         }
     }
 

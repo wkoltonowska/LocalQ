@@ -1,38 +1,55 @@
 package com.example.localq
 
+
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import com.example.localq.databinding.ActivityMainBinding
+import androidx.core.app.ActivityCompat
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 
-class MainActivity : AppCompatActivity() {
-private lateinit var binding: ActivityMainBinding
-private lateinit var navController: NavController
-
+class MainActivity : AppCompatActivity(), OnMapReadyCallback {
+    private lateinit var gMap: GoogleMap;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        setContentView(R.layout.activity_main)
 
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == Maps.LOCATION_PERMISSION_REQUEST_CODE) {
+            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+
+                val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+                mapFragment?.getMapAsync(this) // Przekazujemy "this" (MainActivity) jako OnMapReadyCallback
+            }
         }
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
-      //  navController.navigate(R.id.action_firstQuestionPzn2_to_secondQuestionPzn)
+    }
 
+    override fun onMapReady(map: GoogleMap) {
+        Log.d("MapDebug", "onMapReady called")
+        gMap = map
 
-//    binding.startbtn.setOnClickListener{
-//      navController.navigate(R.id.mainActivity2_to_firstQuestionPzn3)
-//  }
-
-
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                1
+            )
+            return
+        }
+        gMap.isMyLocationEnabled = true;
     }
 }

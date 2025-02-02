@@ -5,6 +5,8 @@
     <string name="yourResult">Twój wynik</string>
     <string name="points">PUNKTÓW</string>
     <string name="totalPoints">0</string>
+    <string name="locationIsFound">Lokalizacja została znaleziona</string>
+    <string name="startQuiz">ROZPOCZNIJ QUIZ</string>
 
     <string name="firstQuestionPzn"> W którym roku powstało słynne Muzeum Rogala Świętomarcińskiego w Poznaniu?</string>
     <string name="firstQestionPznAnsA">A. 2003</string>

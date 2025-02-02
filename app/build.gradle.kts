@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 
+
 }
 
 
@@ -59,15 +60,12 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
 
-    implementation("com.google.android.gms:play-services-maps:19.0.0")
-
+    implementation(libs.play.services.maps)
+    implementation(libs.play.services.location)
 
 //   implementation("androidx.navigation:navigation-compose:$navVersion")
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.runtime)
-
-
-
 
 
 
