@@ -1,7 +1,5 @@
 package com.example.localq
 
-
-import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -29,7 +27,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
 
                 val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
-                mapFragment?.getMapAsync(this) // Przekazujemy "this" (MainActivity) jako OnMapReadyCallback
+                mapFragment?.getMapAsync(this)
             }
         }
     }

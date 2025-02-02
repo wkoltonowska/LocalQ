@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import com.example.localq.databinding.MapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -33,15 +32,11 @@ class Maps : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View? {
 
-
         val view = inflater.inflate(R.layout.maps, container, false)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        // Inicjalizacja klienta lokalizacji
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-
-
 
         val startQuizButton = view.findViewById<Button>(R.id.startQuiz)
         startQuizButton.setOnClickListener {
@@ -53,18 +48,10 @@ class Maps : Fragment(), OnMapReadyCallback {
 
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//
-//
-//    }
-
 
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
 
-        // Sprawdź uprawnienia do lokalizacji
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -73,7 +60,6 @@ class Maps : Fragment(), OnMapReadyCallback {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // Poproś o uprawnienia, jeśli nie są przyznane
             ActivityCompat.requestPermissions(
                 requireActivity(),
                 arrayOf(
@@ -85,10 +71,8 @@ class Maps : Fragment(), OnMapReadyCallback {
             return
         }
 
-        // Włącz przycisk "Moja lokalizacja" na mapie
         googleMap.isMyLocationEnabled = true
 
-        // Pobierz ostatnią znaną lokalizację
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location: Location? ->
                 location?.let {

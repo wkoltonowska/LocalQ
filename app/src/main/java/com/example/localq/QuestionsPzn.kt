@@ -26,8 +26,7 @@ class QuestionsPzn : Fragment() {
     private var score: Int = 0
 
     private fun goToEndScreen() {
-        binding.nextQuestionBtn.setOnTouchListener {
-                                                   v, event ->
+        binding.nextQuestionBtn.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     v.performClick()
@@ -47,8 +46,6 @@ class QuestionsPzn : Fragment() {
     }
 
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -58,8 +55,6 @@ class QuestionsPzn : Fragment() {
 
 
     }
-
-
 
 
     override fun onCreateView(
@@ -183,11 +178,6 @@ class QuestionsPzn : Fragment() {
         }
 
     }
-
-
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

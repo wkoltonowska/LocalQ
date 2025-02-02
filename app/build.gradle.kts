@@ -59,11 +59,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)
 
-//   implementation("androidx.navigation:navigation-compose:$navVersion")
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.runtime)
 
